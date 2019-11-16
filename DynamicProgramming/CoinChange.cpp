@@ -1,3 +1,15 @@
+// Question :
+// Total number of ways to form change for particular number with coins available
+// coins : {1,2,3} n = 4  number of ways = 4 (3,1) (2,1,1) {2,2} {1,1,1,1}
+//
+
+
+
+//Solution Description :
+//Simple recurion with solution that has coin i and doesnt have coin i
+// Ex : getWays(sum,coins-1) + getWays(sum-c[i],coins);
+
+
 struct hash_pair {
     template <class T1, class T2>
     size_t operator()(const pair<T1, T2>& p) const
