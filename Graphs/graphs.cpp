@@ -6,7 +6,7 @@
 // Description : Graphs Problem
 //============================================================================
 
-#include "graphs_proc.h"
+#include "graph_proc.h"
 int main()
 {
 	Graph g(6);
