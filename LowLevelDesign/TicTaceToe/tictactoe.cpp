@@ -1,15 +1,17 @@
 //============================================================================
-// Name        : TicTaceTOe.cpp
+// Name        : TicTaceToe.cpp
 // Author      : Paluri Sai Krishna
 // Description : TicTacToe Experiment
+//               MakeMove in O(1) time
+//               This is one of the entry level yet tricky question
+//               asked for Low Level Design
 //============================================================================
 
 #include <iostream>
 #include <vector>
 #include <cstdlib>
-#include <tr1/unordered_map>
+#include <unordered_map>
 using namespace std;
-using namespace tr1;
 
 
 
