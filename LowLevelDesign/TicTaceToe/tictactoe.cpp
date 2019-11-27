@@ -7,8 +7,9 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
-#include <unordered_map>
+#include <tr1/unordered_map>
 using namespace std;
+using namespace tr1;
 
 
 
@@ -42,6 +43,7 @@ class TicTacToe
 	   {
 		   NotYourTurn =0,
 		   SpaceAlreadyFilled,
+		   WrongCoordinates,
 		   Success
 	   };
 	   TicTacToe(int columns)
@@ -77,6 +79,10 @@ class TicTacToe
 	   {
 		   return this->gameStatus;
 	   }
+     int incrementSpacesFilled()
+     {
+       this->SpacesFilled += 1;
+     }
 	   int MakeMove(int player,int row, int column,int &didPlayerWin);
 	   void startGame();
 	   bool isGameOver()
@@ -135,6 +141,10 @@ void TicTacToe::startGame()
 			{
 				cout<<"Space Already Filled choose Another space";
 			}
+			else if(status == WrongCoordinates)
+			{
+				cout<<"Wrong Coordinates Please enter again";
+			}
 			continue;
 		}
 		if(didCurPlayerWin == 1)
@@ -151,7 +161,7 @@ void TicTacToe::startGame()
 
 	if(this->gameStatus == Draw)
 		cout<<"Both are Equals. Well Fought"<<endl;
-	if(this->gameStatus == P1Won)
+	else if(this->gameStatus == P1Won)
 	{
 		cout<<"Player 1 Emerged as Victorious"<<endl;
 	}
@@ -167,6 +177,10 @@ int TicTacToe::MakeMove(int player,int row,int column,int &didPlayerWin)
 		// Not your turn
 		// Wait for your Turn
 		return NotYourTurn;
+	}
+	if(row <= 0 || column <=0 || row > this->columns || column > this->columns)
+	{
+		return WrongCoordinates;
 	}
 	int value = player == player1 ? 1 : -1;
 
@@ -186,7 +200,7 @@ int TicTacToe::MakeMove(int player,int row,int column,int &didPlayerWin)
 		if( abs(this->diagonalsum) == this->columns)
 			didPlayerWin = 1;
 	}
-	this->SpacesFilled += 1;
+	this->incrementSpacesFilled();
 	return Success; // Move Successful
 }
 
